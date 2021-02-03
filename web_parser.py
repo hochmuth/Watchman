@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 base_url = 'https://finance.yahoo.com/quote/QUOTE/key-statistics?p=QUOTE'
 quotes = ['INTC', 'BIIB', 'MKL']
 
-
 for quote in quotes:
 
     page = requests.get(base_url.replace('QUOTE', quote))
@@ -16,7 +15,15 @@ for quote in quotes:
     # print(type(elems_price))
     [print(f'{quote}: {elem.text.strip()}') for elem in elems_price]
 
+    # Get statistics
     val_table = soup.find(id='mrt-node-Col1-0-KeyStatistics')
     elems_pe_ratio = val_table.find_all('tr', class_='Bxz(bb) H(36px) BdB Bdbc($seperatorColor) fi-row Bgc($hoverBgColor):h')
     # [print(elem) for elem in elems_pe_ratio]
-    print(val_table.find('td', attrs={'data-reactid':'28'}).text.strip())
+    val_market_cap = val_table.find('td', attrs={'data-reactid': '21'}).text.strip()
+    val_pe_trailing = val_table.find('td', attrs={'data-reactid': '35'}).text.strip()
+    val_pb = val_table.find('td', attrs={'data-reactid': '63'}).text.strip()
+    print(f'Market cap: {val_market_cap}')
+    print(f'Trailing P/E: {val_pe_trailing}')
+    print(f'P/B: {val_pb}')
+    print()
+
