@@ -62,18 +62,17 @@ def calculate_iv(byfcf, gr, dr, lgr):
     iv = 0
     for i in range(10):
         n = i + 1
-        # print(f'Calculating for year {n}')
         iv += calculate_dfcf(byfcf, gr, n, dr)
-        # print(f'IV = {iv}')
     iv += calculate_dpfcf(byfcf, gr, dr, lgr)
     return iv
 
 
 if __name__ == '__main__':
-    print(f'Free cash flow in ten years: {calculate_fcf(20931.0, 0.15, 10)}')
-    print(f'Discount factor of ten years: {calculate_df(0.2, 10)}')
-    print(f'Discounted free cash flow in ten years: {calculate_dfcf(20931.0, 0.15, 10, 0.2)}')
-    print(f'Discounted perpetuity free cash flow: {calculate_dpfcf(20931.0, 0.15, 0.2, 0.1)}')
-    print(f'Intrinsic value: {calculate_iv(20.931, 0.15, 0.2, 0.1)}B')
+    ticker = 'MKL'
+    current_fcf = 1.209
+    growth_rate = 0.15
+    discount_rate = 0.2
+    long_term_growth = 0.1
+    shares_outstanding = 0.014
 
-    print(f'Intrisinc value per share: {calculate_iv(20.931, 0.15, 0.2, 0.1) / 4.232}$')
+    print(f'Intrinsic value per share ({ticker}): {round(calculate_iv(current_fcf, growth_rate, discount_rate, long_term_growth) / shares_outstanding, 2)}$')
