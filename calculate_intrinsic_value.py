@@ -69,10 +69,10 @@ def calculate_iv(byfcf, gr, dr, lgr):
 
 if __name__ == '__main__':
     ticker = 'MKL'
-    current_fcf = 1.209
+    current_fcf = 18.834
     growth_rate = 0.15
     discount_rate = 0.2
     long_term_growth = 0.1
-    shares_outstanding = 0.014
+    shares_outstanding = 3.912
 
     print(f'Intrinsic value per share ({ticker}): {round(calculate_iv(current_fcf, growth_rate, discount_rate, long_term_growth) / shares_outstanding, 2)}$')
