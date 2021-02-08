@@ -47,6 +47,7 @@ def calculate_dpfcf(byfcf, gr, dr, lgr):
     :param lgr: long-term growth rate
     :return: discounted perpetuity free cash flow
     """
+    assert dr != lgr, 'Discount rate can\'t equal long-term growth rate (zero division issue)'
     return (((byfcf * pow(1 + gr, 11)) * (1 + lgr)) / (dr - lgr)) * (1 / pow(1 + dr, 11))
 
 
@@ -68,8 +69,8 @@ def calculate_iv(byfcf, gr, dr, lgr):
 
 
 if __name__ == '__main__':
-    ticker = 'MKL'
-    current_fcf = 18.834
+    ticker = 'INTC'
+    current_fcf = 20.931
     growth_rate = 0.15
     discount_rate = 0.2
     long_term_growth = 0.1
