@@ -37,8 +37,6 @@ def get_fundamentals_from_api(tickers, functions):
         fund_dict = dict()
         for function in functions:
             response = call_api(API_URL, api_data_function(ticker, function, api_key))
-            # print(response.ok)
-            # print(response.json())
             assert response.ok, f'Error in getting response from server. Ticker {ticker}, function {function}'
             fund_dict[function] = response.json()
         out_dict[ticker] = fund_dict
