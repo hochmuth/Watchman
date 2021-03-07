@@ -1,6 +1,8 @@
-import os
+'''Gathers fundamental information about a stock using the Alpha Vantage API.'''
 import requests
 import pandas as pd
+
+# Local
 import secrets
 
 API_URL = 'https://www.alphavantage.co/query'
@@ -10,9 +12,8 @@ data = {'function': 'OVERVIEW',
         'symbol': symbol,
         'outputsize': 'full',
         'datatype': 'json',
-        'apikey': os.getenv('ALPHAVANTAGE_API_KEY')}
+        'apikey': secrets.alpha_vantage_key}
 
 response = requests.get(API_URL, params=data)
 assert response.ok, 'Error in getting response from server'
-print('Ok')
-
+[print(f'{key}: {response.json()[key]}') for key in response.json()]
