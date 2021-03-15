@@ -12,7 +12,7 @@ from metrics import metric_map
 
 API_URL = 'https://www.alphavantage.co/query'
 api_key = secrets.ALPHAVANTAGE_API_KEY
-api_tickers = ['BIIB', 'GOOG', 'INTC']
+api_tickers = ['FB']
 
 api_functions = ['OVERVIEW',
                  'INCOME_STATEMENT',

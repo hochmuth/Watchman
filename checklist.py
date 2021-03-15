@@ -1,6 +1,6 @@
 checklist = {
     'DE_max': 0.7,
-    'PE_max': 15,
+    'PE_max': 30,
     'PB_max': 3,
     'CurrRatio_min': 1.5,
     'CurrRatio_max': 2.5,
