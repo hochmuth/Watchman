@@ -55,6 +55,7 @@ def get_annual_data(data, ticker, fin_statement, fin_metric):
 def get_fundamentals_from_api(tickers, functions, api_url, api_key):
     out_dict = dict()
     for ticker in tickers:
+        print(f'Gathering {ticker}')
         fund_dict = dict()
         for i, function in enumerate(functions):
             # API limit
