@@ -23,7 +23,7 @@ def annual_data_into_df(ticker, metric_map, json_data, trim_key=False):
                 df_annual = df_annual.join(df_tmp, how='inner')
     df_annual.sort_index(inplace=True)
     if trim_key:
-        df_annual.index = df_annual.index.str.replace('-12-31', '')
+        df_annual.index = df_annual.index.str[:4]
     return df_annual
 
 
